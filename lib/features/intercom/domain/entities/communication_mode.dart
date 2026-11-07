@@ -1,0 +1,4 @@
+enum CommunicationMode {
+  intercom,
+  openMic,
+}

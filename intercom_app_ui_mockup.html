@@ -1,0 +1,155 @@
+
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: transparent; }
+  .phones { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; padding: 1rem 0 1.5rem; }
+  .phone { width: 200px; background: #0d0f14; border-radius: 28px; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; box-shadow: 0 0 0 6px rgba(255,255,255,0.04); }
+  .phone-inner { padding: 20px 16px 28px; min-height: 360px; display: flex; flex-direction: column; align-items: center; position: relative; }
+  .status-bar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 16px; }
+  .status-bar span { font-size: 10px; color: rgba(255,255,255,0.4); }
+  .notch { width: 50px; height: 6px; background: #0d0f14; border-radius: 3px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2; }
+
+  /* Screen 1: Role Select */
+  .screen-label { font-size: 9px; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 8px; width: 100%; text-align: center; }
+  .logo-dot { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(255,120,30,0.6); display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+  .logo-dot svg { width: 18px; height: 18px; }
+  .app-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+  .app-sub { font-size: 9px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+  .role-card { width: 100%; border-radius: 12px; padding: 12px 10px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; border: 1px solid; cursor: pointer; }
+  .role-card.director { background: rgba(255,120,30,0.1); border-color: rgba(255,120,30,0.4); }
+  .role-card.crew { background: rgba(60,150,255,0.08); border-color: rgba(60,150,255,0.25); }
+  .role-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .role-icon.d { background: rgba(255,120,30,0.2); }
+  .role-icon.c { background: rgba(60,150,255,0.15); }
+  .role-name { font-size: 11px; font-weight: 500; color: #fff; }
+  .role-desc { font-size: 8px; color: rgba(255,255,255,0.4); }
+
+  /* Screen 2: Room Join */
+  .back-row { display: flex; align-items: center; gap: 6px; width: 100%; margin-bottom: 12px; }
+  .back-row span { font-size: 9px; color: rgba(255,120,30,0.8); }
+  .director-badge { background: rgba(255,120,30,0.15); border: 1px solid rgba(255,120,30,0.35); border-radius: 6px; padding: 3px 8px; font-size: 9px; color: rgba(255,120,30,0.9); margin-bottom: 14px; }
+  .room-label { font-size: 9px; color: rgba(255,255,255,0.35); width: 100%; margin-bottom: 4px; }
+  .room-input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 10px; font-size: 10px; color: #fff; box-sizing: border-box; margin-bottom: 10px; }
+  .recent-label { font-size: 8px; color: rgba(255,255,255,0.25); width: 100%; margin-bottom: 6px; }
+  .recent-chip { display: inline-flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3px 8px; font-size: 8px; color: rgba(255,255,255,0.5); margin-right: 4px; margin-bottom: 4px; }
+  .join-btn { width: 100%; background: linear-gradient(135deg, #ff7a1e, #e85d04); border: none; border-radius: 10px; padding: 9px; font-size: 10px; font-weight: 500; color: #fff; margin-top: 8px; cursor: pointer; }
+
+  /* Screen 3: Intercom Active */
+  .room-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3px 10px; font-size: 8px; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .members-row { display: flex; gap: 6px; margin-bottom: 16px; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 8px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.07); }
+  .avatar.active { border-color: #ff7a1e; background: rgba(255,120,30,0.15); color: rgba(255,120,30,0.9); }
+  .speaking-indicator { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+  .wave-dots { display: flex; gap: 2px; align-items: flex-end; height: 14px; }
+  .wave-dot { width: 2.5px; border-radius: 2px; background: #ff7a1e; }
+  .ptt-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 4px; }
+  .ptt-outer { width: 72px; height: 72px; border-radius: 50%; border: 2px solid rgba(255,120,30,0.3); display: flex; align-items: center; justify-content: center; }
+  .ptt-btn { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(145deg, #ff7a1e, #c94f00); display: flex; align-items: center; justify-content: center; }
+  .ptt-hint { font-size: 8px; color: rgba(255,255,255,0.3); }
+  .status-pill { border-radius: 20px; padding: 3px 10px; font-size: 8px; font-weight: 500; }
+  .status-pill.listening { background: rgba(60,150,255,0.1); color: rgba(60,150,255,0.7); border: 1px solid rgba(60,150,255,0.25); }
+  .status-pill.speaking { background: rgba(255,120,30,0.15); color: rgba(255,120,30,0.9); border: 1px solid rgba(255,120,30,0.4); }
+</style>
+
+<div class="phones">
+
+  <!-- Screen 1: Role Selection -->
+  <div class="phone">
+    <div class="phone-inner">
+      <div class="notch"></div>
+      <div class="status-bar"><span>9:41</span><span>●●● ▮▮</span></div>
+      <div class="screen-label">Select your role</div>
+      <div class="logo-dot">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#ff7a1e" stroke-width="1.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#ff7a1e" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="app-title">CrewComm</div>
+      <div class="app-sub">Film Production Intercom</div>
+
+      <div class="role-card director">
+        <div class="role-icon d">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 10l4.553-2.276A1 1 0 0121 8.724v6.552a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="#ff7a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="role-name">Director</div>
+          <div class="role-desc">Speak to all crew</div>
+        </div>
+      </div>
+
+      <div class="role-card crew">
+        <div class="role-icon c">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#3c96ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="role-name" style="color:#3c96ff">Crew</div>
+          <div class="role-desc">Listen &amp; respond</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 2: Room Join -->
+  <div class="phone">
+    <div class="phone-inner">
+      <div class="notch"></div>
+      <div class="status-bar"><span>9:41</span><span>●●● ▮▮</span></div>
+      <div class="back-row">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#ff7a1e" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Back</span>
+      </div>
+      <div class="director-badge">Director Mode</div>
+      <div class="room-label">Room ID</div>
+      <input class="room-input" placeholder="e.g. Shoot_Day_1" value="Shoot_Day_1" readonly />
+      <div class="recent-label">Recent rooms</div>
+      <div style="width:100%">
+        <span class="recent-chip">Shoot_Day_1</span>
+        <span class="recent-chip">BTS_Cam</span>
+        <span class="recent-chip">VFX_Call</span>
+      </div>
+      <button class="join-btn">Join Room →</button>
+    </div>
+  </div>
+
+  <!-- Screen 3: Intercom Active -->
+  <div class="phone">
+    <div class="phone-inner">
+      <div class="notch"></div>
+      <div class="status-bar"><span>9:41</span><span>●●● ▮▮</span></div>
+      <div class="room-chip">Shoot_Day_1</div>
+      <div class="members-row">
+        <div class="avatar active">D</div>
+        <div class="avatar">C1</div>
+        <div class="avatar">C2</div>
+        <div class="avatar">C3</div>
+        <div style="font-size:8px;color:rgba(255,255,255,0.3);align-self:center;margin-left:2px">+2</div>
+      </div>
+
+      <div class="speaking-indicator">
+        <div class="wave-dots">
+          <div class="wave-dot" style="height:4px"></div>
+          <div class="wave-dot" style="height:10px"></div>
+          <div class="wave-dot" style="height:6px"></div>
+          <div class="wave-dot" style="height:12px"></div>
+          <div class="wave-dot" style="height:5px"></div>
+          <div class="wave-dot" style="height:9px"></div>
+        </div>
+        <span style="font-size:9px;color:rgba(255,120,30,0.8)">Director speaking…</span>
+      </div>
+
+      <div class="status-pill speaking" style="margin-bottom:16px">Live</div>
+
+      <div class="ptt-wrap">
+        <div class="ptt-outer">
+          <div class="ptt-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 1a3 3 0 013 3v8a3 3 0 11-6 0V4a3 3 0 013-3z" fill="rgba(255,255,255,0.9)"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="ptt-hint">Hold to speak</div>
+      </div>
+
+      <div style="margin-top:auto;padding-top:12px;width:100%;display:flex;justify-content:space-between;align-items:center">
+        <div class="status-pill listening">Listening</div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,138 @@
+
+<style>
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 1.5rem 0; }
+  .logo-card { background: #0d0f14; border-radius: 16px; padding: 32px 20px 20px; display: flex; flex-direction: column; align-items: center; gap: 16px; border: 1px solid rgba(255,255,255,0.08); }
+  .logo-name { font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); text-transform: uppercase; text-align: center; }
+  .logo-desc { font-size: 11px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; }
+</style>
+
+<div class="logo-grid">
+
+  <!-- Concept 1: Signal Clapper -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Clapper board base -->
+      <rect x="16" y="32" width="48" height="34" rx="4" fill="none" stroke="#FF7A1E" stroke-width="2"/>
+      <!-- Clapper top bar -->
+      <rect x="16" y="24" width="48" height="10" rx="3" fill="#FF7A1E"/>
+      <!-- Diagonal stripes on top bar -->
+      <clipPath id="cb1"><rect x="16" y="24" width="48" height="10" rx="3"/></clipPath>
+      <g clip-path="url(#cb1)">
+        <line x1="24" y1="24" x2="16" y2="34" stroke="#0d0f14" stroke-width="3"/>
+        <line x1="34" y1="24" x2="26" y2="34" stroke="#0d0f14" stroke-width="3"/>
+        <line x1="44" y1="24" x2="36" y2="34" stroke="#0d0f14" stroke-width="3"/>
+        <line x1="54" y1="24" x2="46" y2="34" stroke="#0d0f14" stroke-width="3"/>
+        <line x1="64" y1="24" x2="56" y2="34" stroke="#0d0f14" stroke-width="3"/>
+      </g>
+      <!-- Mic/signal arcs inside clapper -->
+      <path d="M33 49a7 7 0 0 1 14 0" fill="none" stroke="#FF7A1E" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28 49a12 12 0 0 1 24 0" fill="none" stroke="#FF7A1E" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+      <circle cx="40" cy="53" r="2.5" fill="#FF7A1E"/>
+    </svg>
+    <div class="logo-name">Signal Clapper</div>
+    <div class="logo-desc">Clapper board fused with a broadcast signal — instantly reads as film + comms</div>
+  </div>
+
+  <!-- Concept 2: Orbit Mic -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Outer orbit ring -->
+      <circle cx="40" cy="40" r="26" fill="none" stroke="#FF7A1E" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+      <!-- Middle ring -->
+      <circle cx="40" cy="40" r="18" fill="none" stroke="#FF7A1E" stroke-width="1.5" opacity="0.6"/>
+      <!-- Mic body -->
+      <rect x="35" y="26" width="10" height="18" rx="5" fill="#FF7A1E"/>
+      <!-- Mic stand -->
+      <path d="M40 44v8M34 52h12" fill="none" stroke="#FF7A1E" stroke-width="2" stroke-linecap="round"/>
+      <!-- Signal dots on ring -->
+      <circle cx="40" cy="22" r="2.5" fill="#FF7A1E"/>
+      <circle cx="58" cy="40" r="2.5" fill="#FF7A1E"/>
+      <circle cx="40" cy="58" r="2" fill="#FF7A1E" opacity="0.4"/>
+      <circle cx="22" cy="40" r="2" fill="#FF7A1E" opacity="0.4"/>
+    </svg>
+    <div class="logo-name">Orbit Mic</div>
+    <div class="logo-desc">Microphone at the center of a broadcast orbit — communication radiating outward</div>
+  </div>
+
+  <!-- Concept 3: Waveform C -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Bold C letterform -->
+      <path d="M54 24a22 22 0 1 0 0 32" fill="none" stroke="#FF7A1E" stroke-width="6" stroke-linecap="round"/>
+      <!-- Sound wave bars inside C gap -->
+      <rect x="52" y="33" width="3.5" height="6" rx="1.5" fill="#FF7A1E" opacity="0.5"/>
+      <rect x="57.5" y="30" width="3.5" height="12" rx="1.5" fill="#FF7A1E" opacity="0.75"/>
+      <rect x="63" y="33" width="3.5" height="6" rx="1.5" fill="#FF7A1E" opacity="0.5"/>
+    </svg>
+    <div class="logo-name">Waveform C</div>
+    <div class="logo-desc">Bold "C" for CrewComm with an audio waveform emerging from the open end</div>
+  </div>
+
+  <!-- Concept 4: Director's Lens -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Hexagon frame -->
+      <polygon points="40,14 62,27 62,53 40,66 18,53 18,27" fill="none" stroke="#FF7A1E" stroke-width="1.5" opacity="0.4"/>
+      <!-- Inner hexagon -->
+      <polygon points="40,22 56,31 56,49 40,58 24,49 24,31" fill="none" stroke="#FF7A1E" stroke-width="1"/>
+      <!-- Mic signal icon inside -->
+      <rect x="36" y="29" width="8" height="13" rx="4" fill="#FF7A1E"/>
+      <path d="M31 40a9 9 0 0 0 18 0" fill="none" stroke="#FF7A1E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="40" y1="49" x2="40" y2="54" stroke="#FF7A1E" stroke-width="2" stroke-linecap="round"/>
+      <line x1="36" y1="54" x2="44" y2="54" stroke="#FF7A1E" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-name">Hex Intercom</div>
+    <div class="logo-desc">Hexagon (structure, crew grid) wrapping a mic — professional and geometric</div>
+  </div>
+
+  <!-- Concept 5: Push to Talk -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Outer pulse ring -->
+      <circle cx="40" cy="40" r="28" fill="none" stroke="#FF7A1E" stroke-width="1" opacity="0.2"/>
+      <circle cx="40" cy="40" r="22" fill="none" stroke="#FF7A1E" stroke-width="1.5" opacity="0.4"/>
+      <!-- PTT button circle -->
+      <circle cx="40" cy="40" r="16" fill="#FF7A1E"/>
+      <!-- Mic inside button -->
+      <rect x="36.5" y="31" width="7" height="12" rx="3.5" fill="#0d0f14"/>
+      <path d="M33 41a7 7 0 0 0 14 0" fill="none" stroke="#0d0f14" stroke-width="2" stroke-linecap="round"/>
+      <line x1="40" y1="48" x2="40" y2="51" stroke="#0d0f14" stroke-width="2" stroke-linecap="round"/>
+      <line x1="37" y1="51" x2="43" y2="51" stroke="#0d0f14" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-name">PTT Circle</div>
+    <div class="logo-desc">The push-to-talk button IS the logo — direct, iconic, immediately understood</div>
+  </div>
+
+  <!-- Concept 6: Film Wave -->
+  <div class="logo-card">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <rect width="80" height="80" rx="20" fill="#1a1d24"/>
+      <!-- Film strip left side -->
+      <rect x="14" y="20" width="10" height="40" rx="2" fill="none" stroke="#FF7A1E" stroke-width="1.5" opacity="0.5"/>
+      <rect x="16" y="24" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="16" y="32" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="16" y="40" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="16" y="48" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <!-- Audio waveform center -->
+      <rect x="29" y="38" width="4" height="4" rx="2" fill="#FF7A1E" opacity="0.5"/>
+      <rect x="35" y="33" width="4" height="14" rx="2" fill="#FF7A1E" opacity="0.75"/>
+      <rect x="41" y="28" width="4" height="24" rx="2" fill="#FF7A1E"/>
+      <rect x="47" y="33" width="4" height="14" rx="2" fill="#FF7A1E" opacity="0.75"/>
+      <rect x="53" y="38" width="4" height="4" rx="2" fill="#FF7A1E" opacity="0.5"/>
+      <!-- Film strip right side -->
+      <rect x="56" y="20" width="10" height="40" rx="2" fill="none" stroke="#FF7A1E" stroke-width="1.5" opacity="0.5"/>
+      <rect x="58" y="24" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="58" y="32" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="58" y="40" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+      <rect x="58" y="48" width="6" height="5" rx="1" fill="#FF7A1E" opacity="0.3"/>
+    </svg>
+    <div class="logo-name">Film Wave</div>
+    <div class="logo-desc">Film strip borders flanking an audio waveform — film crew communication in one mark</div>
+  </div>
+
+</div>
